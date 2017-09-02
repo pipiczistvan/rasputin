@@ -1,0 +1,21 @@
+.content {
+    margin: 8px;
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.card {
+    padding: 16px 0px;
+}
+
+.card-item {
+    padding: 0px 24px;
+}
+
+md-card-content > .card-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+}

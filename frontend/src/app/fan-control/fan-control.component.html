@@ -1,0 +1,25 @@
+<md-card class="card">
+  <md-card-header class="card-item">
+    <md-card-title>
+      <h3>Fan controlling</h3>
+    </md-card-title>
+    <md-card-subtitle>Current temperature is <strong>{{ temperature }}</strong>°C</md-card-subtitle>
+    <span class="fill-space"></span>
+    <md-icon class="mat-icon-50" [ngClass]="{'spinning': fanActivity}" svgIcon="icon:fan"></md-icon>
+  </md-card-header>
+  <md-card-content>
+    <md-slide-toggle class="card-item" [(ngModel)]="fanActivity" (click)="toggleFan()" [disabled]="automation">
+      Fan is <strong>{{ fanActivity ? 'ON' : 'OFF' }}</strong>!
+    </md-slide-toggle>
+    <div class="card-item">
+        <md-checkbox [(ngModel)]="automation" (click)="toggleAutomation()"></md-checkbox>
+        Turn on above
+        <md-select class="temperature-selector" [(ngModel)]="selectedDegree" name="degree">
+          <md-option *ngFor="let degree of degrees" [value]="degree">
+            {{degree}}
+          </md-option>
+        </md-select>
+        °C
+      </div>
+  </md-card-content>
+</md-card>

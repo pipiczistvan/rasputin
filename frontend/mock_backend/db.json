@@ -1,0 +1,10 @@
+{
+    "activity": {
+        "status": 200,
+        "value": true
+    },
+    "temperature": {
+        "status": 200,
+        "value": 42
+    }
+}

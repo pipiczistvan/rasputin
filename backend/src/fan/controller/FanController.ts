@@ -22,11 +22,11 @@ class FanController {
     private getTemperature(): void {
         this.router.get('/temperature', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
-            const data = { value: this.fanService.getTemperature() };
+            const temperature = this.fanService.getTemperature();
 
             res.json({
-                status,
-                data
+                status: status,
+                value: temperature
             });
         });
     }
@@ -34,11 +34,11 @@ class FanController {
     private getActivity(): void {
         this.router.get('/activity', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
-            const data = { value: this.fanService.getActivity() };
+            const active = this.fanService.getActivity();
 
             res.json({
-                status,
-                data
+                status: status,
+                value: active
             });
         });
     }
@@ -50,7 +50,7 @@ class FanController {
             this.fanService.setActivity(req.body.active);
 
             res.json({
-                status
+                status: status
             });
         });
     }
