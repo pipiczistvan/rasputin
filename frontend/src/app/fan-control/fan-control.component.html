@@ -11,15 +11,5 @@
     <md-slide-toggle class="card-item" [(ngModel)]="fanActivity" (click)="toggleFan()" [disabled]="automation">
       Fan is <strong>{{ fanActivity ? 'ON' : 'OFF' }}</strong>!
     </md-slide-toggle>
-    <div class="card-item">
-        <md-checkbox [(ngModel)]="automation" (click)="toggleAutomation()"></md-checkbox>
-        Turn on above
-        <md-select class="temperature-selector" [(ngModel)]="selectedDegree" name="degree">
-          <md-option *ngFor="let degree of degrees" [value]="degree">
-            {{degree}}
-          </md-option>
-        </md-select>
-        °C
-      </div>
   </md-card-content>
 </md-card>
