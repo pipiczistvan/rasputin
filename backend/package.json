@@ -1,0 +1,26 @@
+{
+  "name": "rasputin-backend",
+  "version": "1.0.0",
+  "description": "Rasputin backend",
+  "main": "index.js",
+  "repository": "https://www.github.com/elboman/typescript-lib-example",
+  "author": "Pipicz István",
+  "license": "MIT",
+  "scripts": {
+    "clean": "shx rm -rf dist compiled",
+    "build": "npm run clean && webpack",
+    "start": "npm run build && node dist/server.min.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.37",
+    "@types/node": "^8.0.26",
+    "awesome-typescript-loader": "^3.2.3",
+    "shx": "^0.2.2",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
+  }
+}
