@@ -4,13 +4,14 @@
     "license": "MIT",
     "repository": "https://www.github.com/pipiczistvan/rasputin/rasputin",
     "scripts": {
-        "clean": "shx rm -rf dist",
+        "clean": "shx rm -rf dist deploy",
         "install": "npm run install-backend && npm run install-frontend",
         "install-backend": "cd backend && npm install && cd ..",
         "install-frontend": "cd frontend && npm install && cd ..",
         "build": "npm run clean && npm run build-backend && npm run build-frontend && shx mkdir -p dist/web && shx cp -r backend/dist . && shx cp -r frontend/dist/* ./dist/web",
         "build-backend": "cd backend && npm run build && cd ..",
-        "build-frontend": "cd frontend && npm run build && cd .."
+        "build-frontend": "cd frontend && npm run build && cd ..",
+        "deploy": "npm run build && shx mkdir deploy && shx cp -r dist/* deploy && shx cp -r resources/* deploy"
     },
     "devDependencies": {
         "shx": "^0.2.2"

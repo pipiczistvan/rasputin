@@ -28,12 +28,10 @@ export class FanControlComponent implements OnInit {
   }
 
   toggleFan() {
-    if(!this.automation) {
-      if (!this.fanActivity) {
-        this.fanControlService.turnOn();
-      } else {
-        this.fanControlService.turnOff();
-      }
+    if (!this.fanActivity) {
+      this.fanControlService.turnOn();
+    } else {
+      this.fanControlService.turnOff();
     }
   }
 

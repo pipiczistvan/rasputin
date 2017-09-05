@@ -1,11 +1,11 @@
 import * as http from 'http';
 import * as debug from 'debug';
-import { Properties } from 'ts-json-properties';
+import { Properties, Value } from 'ts-json-properties';
 Properties.initialize('./properties.json');
 
 import Server  from './server/server';
 
-const port = normalizePort(process.env.PORT || 3000);
+const port = Properties.getValue('port');
 Server.set('port', port);
 
 console.log(`Server listening on port ${port}`);

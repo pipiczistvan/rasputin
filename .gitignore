@@ -3,6 +3,7 @@
 node_modules
 dist
 compiled
+deploy
 
 package-lock.json
 yarn.lock

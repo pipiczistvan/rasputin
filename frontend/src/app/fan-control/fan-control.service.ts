@@ -10,15 +10,16 @@ export class FanControlService {
   constructor(private http: Http) { }
 
   turnOn() {
+    console.log("posting");
     this.http.post('/api/fan/activity', {
-        activity: true
-    });
+        active: true
+    }).subscribe();
   }
 
   turnOff() {
     this.http.post('/api/fan/activity', {
-        activity: false
-    });
+        active: false
+    }).subscribe();
   }
 
   getStatus(): Observable<any> {

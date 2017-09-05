@@ -9,15 +9,15 @@ export class FanService {
     }
 
     public getTemperature(): number {
-        return this.context.temperature;
+        return this.context.getTemperature();
     }
 
     public getActivity(): boolean {
-        return this.context.active;
+        return this.context.isActive();
     }
 
     public setActivity(active: boolean): void {
-        this.context.active = active;
+        this.context.setActivity(active);
     }
 
 }

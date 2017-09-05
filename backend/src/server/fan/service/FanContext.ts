@@ -13,14 +13,27 @@ export class FanContext {
     @Value('scripts.fan.turn.off')
     private turnOffScript: string;
 
-    public active: boolean;
-    public temperature: number;
+    private active: boolean;
+    private temperature: number;
 
     constructor() {
         this.active = false;
         this.temperature = 0;
 
         this.updateContext();
+    }
+
+    public isActive(): boolean {
+        return this.active;
+    }
+
+    public setActivity(active: boolean): void {
+        this.active = active;
+        this.updateGpio();
+    }
+
+    public getTemperature(): number {
+        return this.temperature;
     }
 
     private updateContext(): void {
