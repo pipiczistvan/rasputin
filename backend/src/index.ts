@@ -1,7 +1,9 @@
 import * as http from 'http';
 import * as debug from 'debug';
+import { Properties } from 'ts-json-properties';
+Properties.initialize('./properties.json');
 
-import Server from './server';
+import Server  from './server/server';
 
 const port = normalizePort(process.env.PORT || 3000);
 Server.set('port', port);

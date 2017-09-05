@@ -3,7 +3,6 @@ import * as bodyParser from 'body-parser';
 
 import FanController from './fan/controller/FanController';
 
-// Server class
 class Server {
 
     public app: express.Application;
@@ -22,6 +21,7 @@ class Server {
     private routes(): void {
         let router = express.Router();
 
+        this.app.use(express.static('web'));
         this.app.use('/', router);
         this.app.use('/api/fan', FanController)
     }

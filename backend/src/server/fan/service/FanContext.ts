@@ -1,9 +1,17 @@
+import { Value, Properties } from 'ts-json-properties';
 const limit = 50;
 const updateTime = 10000;
 
 import * as childProcess from 'child_process';
 
 export class FanContext {
+
+    @Value('scripts.fan.temperature')
+    private temperatureScript: string;
+    @Value('scripts.fan.turn.on')
+    private turnOnScript: string;
+    @Value('scripts.fan.turn.off')
+    private turnOffScript: string;
 
     public active: boolean;
     public temperature: number;
@@ -24,7 +32,7 @@ export class FanContext {
     }
 
     private updateTemperature(): void {
-        let processOutput = childProcess.execSync('./res/get_temp.sh').toString();
+        let processOutput = childProcess.execSync(this.temperatureScript).toString();
         this.temperature = parseInt(processOutput);
     }
 
@@ -34,9 +42,9 @@ export class FanContext {
 
     private updateGpio(): void {
         if (this.active) {
-            childProcess.execSync('./res/write_gpio.sh 18 1');
+            childProcess.execSync(this.turnOnScript);
         } else {
-            childProcess.execSync('./res/write_gpio.sh 18 0');
+            childProcess.execSync(this.turnOffScript);
         }
     }
 

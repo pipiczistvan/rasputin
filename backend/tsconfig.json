@@ -3,7 +3,8 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "target": "es5",
-    "outDir": "compiled"
+    "outDir": "dist",
+    "experimentalDecorators": true
   },
   "files": [
     "./src/index.ts"

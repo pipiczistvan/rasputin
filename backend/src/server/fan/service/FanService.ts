@@ -1,4 +1,5 @@
 import { FanContext } from './FanContext';
+
 export class FanService {
 
     private context: FanContext;

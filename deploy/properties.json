@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "fan": {
+            "temperature": "./get_temp.sh",
+            "turn" : {
+                "on": "./write_gpio 18 1",
+                "off": "./write_gpio 18 0"
+            }
+        }
+    }
+}

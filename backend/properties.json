@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "fan": {
+            "temperature": "echo 48",
+            "turn" : {
+                "on": "echo ON",
+                "off": "echo OFF"
+            }
+        }
+    }
+}
