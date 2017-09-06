@@ -8,7 +8,7 @@ var PATHS = {
 
 var config = {
   entry: {
-    'server.min': PATHS.entryPoint
+    'server': PATHS.entryPoint
   },
   output: {
     path: PATHS.bundles,
@@ -19,10 +19,10 @@ var config = {
   },
   target: 'node',
   plugins: [
-    /*new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       include: /\.min\.js$/,
-    })*/
+    })
   ],
   module: {
     exprContextCritical: false,
