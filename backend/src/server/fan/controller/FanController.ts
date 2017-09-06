@@ -44,7 +44,7 @@ class FanController {
     }
 
     private postActivity(): void {
-        this.router.post('/activity', (req: Request, res: Response, next: NextFunction) => {
+        this.router.post('/turn', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
 
             this.fanService.setActivity(req.body.active);
