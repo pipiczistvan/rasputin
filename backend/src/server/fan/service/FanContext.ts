@@ -48,6 +48,7 @@ export class FanContext {
 
     public setAutomation(automatic: boolean): void {
         this.automatic = automatic;
+        this.updateActivity();
     }
 
     public getThreshold(): number {

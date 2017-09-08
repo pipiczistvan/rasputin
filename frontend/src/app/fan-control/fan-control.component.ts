@@ -13,12 +13,12 @@ export class FanControlComponent implements OnInit {
   automation: boolean;
   threshold: number;
 
-  degrees: Array<any>;
+  availableThresholds: Array<any>;
 
   constructor(private fanControlService: FanControlService) { }
 
   ngOnInit() {
-    this.degrees = [40, 45, 50, 55, 60];
+    this.availableThresholds = [40, 45, 50, 55, 60];
 
     this.fanControlService.getTemperature(10000)
       .subscribe(resp => this.temperature = resp.value);
@@ -34,8 +34,10 @@ export class FanControlComponent implements OnInit {
   }
 
   toggleActivity() {
-    this.fanControlService.setActivity(!this.activity)
+    if (!this.automation) {
+      this.fanControlService.setActivity(!this.activity)
       .subscribe();
+    }
   }
 
   toggleAutomation() {

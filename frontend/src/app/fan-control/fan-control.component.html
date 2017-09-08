@@ -11,5 +11,15 @@
     <md-slide-toggle class="card-item" [(ngModel)]="activity" (click)="toggleActivity()" [disabled]="automation">
       Fan is <strong>{{ activity ? 'ON' : 'OFF' }}</strong>!
     </md-slide-toggle>
+    <md-checkbox class="card-item" style="display: inline" [(ngModel)]="automation" (click)="toggleAutomation()"></md-checkbox>
+    <span>
+      <span>Turn on above</span>
+      <md-select class="no-padding vertical-bottom" [(ngModel)]="threshold" name="threshold" (ngModelChange)="setThreshold(threshold)">
+        <md-option *ngFor="let threshold of availableThresholds" [value]="threshold">
+          {{ threshold }}
+        </md-option>
+      </md-select>
+      <span>°C</span>
+    </span>
   </md-card-content>
 </md-card>

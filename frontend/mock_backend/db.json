@@ -8,16 +8,16 @@
     "value": true
   },
   "set-activity": {
-    "value": true,
-    "apiId": "set-activity"
+    "value": false,
+    "apiId": "fan"
   },
   "automation": {
     "status": 200,
     "value": true
   },
   "set-automation": {
-    "value": true,
-    "apiId": "set-automation"
+    "value": false,
+    "apiId": "fan"
   },
   "threshold": {
     "status": 200,
