@@ -1,5 +1,5 @@
-import { FanService } from './../service/FanService';
-import { Router, Request, Response, NextFunction } from 'express';
+import { FanService } from '../service/FanService';
+import { NextFunction, Request, Response, Router } from 'express';
 
 class FanController {
 
@@ -16,7 +16,12 @@ class FanController {
     private setupRoutes() {
         this.getTemperature();
         this.getActivity();
+        this.getAutomation();
+        this.getThreshold();
+
         this.postActivity();
+        this.postAutomation();
+        this.postThreshold();
     }
 
     private getTemperature(): void {
@@ -43,11 +48,59 @@ class FanController {
         });
     }
 
+    private getAutomation(): void {
+        this.router.get('/automation', (req: Request, res: Response, next: NextFunction) => {
+            const status = res.statusCode;
+            const automatic = this.fanService.getAutomation();
+
+            res.json({
+                status: status,
+                value: automatic
+            });
+        });
+    }
+
+    private getThreshold(): void {
+        this.router.get('/threshold', (req: Request, res: Response, next: NextFunction) => {
+            const status = res.statusCode;
+            const threshold = this.fanService.getThreshold();
+
+            res.json({
+                status: status,
+                value: threshold
+            });
+        });
+    }
+
     private postActivity(): void {
-        this.router.post('/turn', (req: Request, res: Response, next: NextFunction) => {
+        this.router.post('/set-activity', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
 
             this.fanService.setActivity(req.body.active);
+
+            res.json({
+                status: status
+            });
+        });
+    }
+
+    private postAutomation(): void {
+        this.router.post('/set-automation', (req: Request, res: Response, next: NextFunction) => {
+            const status = res.statusCode;
+
+            this.fanService.setActivity(req.body.value);
+
+            res.json({
+                status: status
+            });
+        });
+    }
+
+    private postThreshold(): void {
+        this.router.post('/set-threshold', (req: Request, res: Response, next: NextFunction) => {
+            const status = res.statusCode;
+
+            this.fanService.setThreshold(req.body.value);
 
             res.json({
                 status: status

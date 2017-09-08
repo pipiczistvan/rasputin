@@ -1,14 +1,30 @@
 {
-  "turn": {
-    "active": true,
-    "apiId": "fan"
+  "temperature": {
+    "status": 200,
+    "value": 42
   },
   "activity": {
     "status": 200,
     "value": true
   },
-  "temperature": {
+  "set-activity": {
+    "value": true,
+    "apiId": "set-activity"
+  },
+  "automation": {
     "status": 200,
-    "value": 42
+    "value": true
+  },
+  "set-automation": {
+    "value": true,
+    "apiId": "set-automation"
+  },
+  "threshold": {
+    "status": 200,
+    "value": 40
+  },
+  "set-threshold": {
+    "value": 40,
+    "apiId": "set-threshold"
   }
 }

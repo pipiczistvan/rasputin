@@ -1,5 +1,5 @@
-import { Value, Properties } from 'ts-json-properties';
-const limit = 50;
+import { Value } from 'ts-json-properties';
+
 const updateTime = 10000;
 
 import * as childProcess from 'child_process';
@@ -16,9 +16,15 @@ export class FanContext {
     private active: boolean;
     private temperature: number;
 
+    private automatic: boolean;
+    private threshold: number;
+
     constructor() {
         this.active = false;
         this.temperature = 0;
+
+        this.automatic = false;
+        this.threshold = 40;
 
         this.updateContext();
     }
@@ -36,6 +42,22 @@ export class FanContext {
         return this.temperature;
     }
 
+    public isAutomatic(): boolean {
+        return this.automatic;
+    }
+
+    public setAutomation(automatic: boolean): void {
+        this.automatic = automatic;
+    }
+
+    public getThreshold(): number {
+        return this.threshold;
+    }
+
+    public setThreshold(threshold: number): void {
+        this.threshold = threshold;
+    }
+
     private updateContext(): void {
         this.updateTemperature();
         this.updateActivity();
@@ -50,7 +72,9 @@ export class FanContext {
     }
 
     private updateActivity(): void {
-        //this.active = this.temperature > limit;
+        if(this.automatic) {
+            this.active = this.temperature > this.threshold;
+        }
     }
 
     private updateGpio(): void {

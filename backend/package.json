@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "shx rm -rf dist compiled",
     "build": "npm run clean && webpack",
-    "start": "npm run build && node dist/server.min.js"
+    "start": "npm run build && node dist/server.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",

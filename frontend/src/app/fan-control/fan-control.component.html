@@ -5,11 +5,11 @@
     </md-card-title>
     <md-card-subtitle>Current temperature is <strong>{{ temperature }}</strong>°C</md-card-subtitle>
     <span class="fill-space"></span>
-    <md-icon class="mat-icon-50" [ngClass]="{'spinning': fanActivity}" svgIcon="icon:fan"></md-icon>
+    <md-icon class="mat-icon-50" [ngClass]="{'spinning': activity}" svgIcon="icon:fan"></md-icon>
   </md-card-header>
   <md-card-content>
-    <md-slide-toggle class="card-item" [(ngModel)]="fanActivity" (click)="toggleFan()" [disabled]="automation">
-      Fan is <strong>{{ fanActivity ? 'ON' : 'OFF' }}</strong>!
+    <md-slide-toggle class="card-item" [(ngModel)]="activity" (click)="toggleActivity()" [disabled]="automation">
+      Fan is <strong>{{ activity ? 'ON' : 'OFF' }}</strong>!
     </md-slide-toggle>
   </md-card-content>
 </md-card>
