@@ -16,9 +16,11 @@ export class FanControlService {
     });
   }
 
-  getActivity(): Observable<any> {
-    return this.http.get("/api/fan/activity")
-      .map((res: Response) => res.json());
+  getActivity(updateMillis: number): Observable<any> {
+    return Observable.timer(0, updateMillis).flatMap(() => {
+      return this.http.get("/api/fan/activity")
+        .map((res: Response) => res.json());
+    });
   }
 
   setActivity(active: boolean): Observable<any> {
@@ -35,7 +37,7 @@ export class FanControlService {
   setAutomation(automatic: boolean): Observable<any> {
     return this.http.post("/api/fan/set-automation", {
       value: automatic
-    });
+    }).map((res: Response) => res.json());
   }
 
   getThreshold(): Observable<any> {
@@ -46,7 +48,7 @@ export class FanControlService {
   setThreshold(threshold: number): Observable<any> {
       return this.http.post("/api/fan/set-threshold", {
         value: threshold
-      });
+      }).map((res: Response) => res.json());
   }
 
 }

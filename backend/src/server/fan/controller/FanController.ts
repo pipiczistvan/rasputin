@@ -76,7 +76,7 @@ class FanController {
         this.router.post('/set-activity', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
 
-            this.fanService.setActivity(req.body.active);
+            this.fanService.setActivity(req.body.value);
 
             res.json({
                 status: status
@@ -88,10 +88,13 @@ class FanController {
         this.router.post('/set-automation', (req: Request, res: Response, next: NextFunction) => {
             const status = res.statusCode;
 
-            this.fanService.setActivity(req.body.value);
+            this.fanService.setAutomation(req.body.value);
+
+            const active = this.fanService.getActivity();
 
             res.json({
-                status: status
+                status: status,
+                value: active
             });
         });
     }
@@ -102,8 +105,11 @@ class FanController {
 
             this.fanService.setThreshold(req.body.value);
 
+            const active = this.fanService.getActivity();
+
             res.json({
-                status: status
+                status: status,
+                value: active
             });
         });
     }

@@ -16,7 +16,7 @@
     "value": true
   },
   "set-automation": {
-    "value": false,
+    "value": true,
     "apiId": "fan"
   },
   "threshold": {

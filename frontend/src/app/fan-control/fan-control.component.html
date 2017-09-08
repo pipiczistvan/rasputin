@@ -8,10 +8,10 @@
     <md-icon class="mat-icon-50" [ngClass]="{'spinning': activity}" svgIcon="icon:fan"></md-icon>
   </md-card-header>
   <md-card-content>
-    <md-slide-toggle class="card-item" [(ngModel)]="activity" (click)="toggleActivity()" [disabled]="automation">
+    <md-slide-toggle class="card-item" [(ngModel)]="activity" (ngModelChange)="setActivity(activity)" [disabled]="automation">
       Fan is <strong>{{ activity ? 'ON' : 'OFF' }}</strong>!
     </md-slide-toggle>
-    <md-checkbox class="card-item" style="display: inline" [(ngModel)]="automation" (click)="toggleAutomation()"></md-checkbox>
+    <md-checkbox class="card-item" style="display: inline" [(ngModel)]="automation" (ngModelChange)="setAutomation(automation)"></md-checkbox>
     <span>
       <span>Turn on above</span>
       <md-select class="no-padding vertical-bottom" [(ngModel)]="threshold" name="threshold" (ngModelChange)="setThreshold(threshold)">

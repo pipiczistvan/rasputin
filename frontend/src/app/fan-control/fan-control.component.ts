@@ -18,12 +18,12 @@ export class FanControlComponent implements OnInit {
   constructor(private fanControlService: FanControlService) { }
 
   ngOnInit() {
-    this.availableThresholds = [40, 45, 50, 55, 60];
+    this.availableThresholds = [30, 35, 40, 45, 50, 55, 60];
 
     this.fanControlService.getTemperature(10000)
       .subscribe(resp => this.temperature = resp.value);
 
-    this.fanControlService.getActivity()
+    this.fanControlService.getActivity(10000)
       .subscribe(resp => this.activity = resp.value);
 
     this.fanControlService.getAutomation()
@@ -33,21 +33,19 @@ export class FanControlComponent implements OnInit {
       .subscribe(resp => this.threshold = resp.value);
   }
 
-  toggleActivity() {
-    if (!this.automation) {
-      this.fanControlService.setActivity(!this.activity)
-      .subscribe();
-    }
+  setActivity(activity: boolean): void {
+    this.fanControlService.setActivity(activity)
+    .subscribe();
   }
 
-  toggleAutomation() {
-    this.fanControlService.setAutomation(!this.automation)
-      .subscribe();
+  setAutomation(automation: boolean): void {
+    this.fanControlService.setAutomation(automation)
+      .subscribe(resp => this.activity = resp.value);
   }
 
-  setThreshold(threshold: number) {
+  setThreshold(threshold: number): void {
     this.fanControlService.setThreshold(threshold)
-      .subscribe();
+      .subscribe(resp => this.activity = resp.value);
   }
 
 }

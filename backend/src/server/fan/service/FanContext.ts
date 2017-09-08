@@ -35,7 +35,7 @@ export class FanContext {
 
     public setActivity(active: boolean): void {
         this.active = active;
-        this.updateGpio();
+        this.updateContext();
     }
 
     public getTemperature(): number {
@@ -48,7 +48,7 @@ export class FanContext {
 
     public setAutomation(automatic: boolean): void {
         this.automatic = automatic;
-        this.updateActivity();
+        this.updateContext();
     }
 
     public getThreshold(): number {
@@ -57,6 +57,7 @@ export class FanContext {
 
     public setThreshold(threshold: number): void {
         this.threshold = threshold;
+        this.updateContext();
     }
 
     private updateContext(): void {
@@ -74,7 +75,7 @@ export class FanContext {
 
     private updateActivity(): void {
         if(this.automatic) {
-            this.active = this.temperature > this.threshold;
+            this.active = (this.temperature > this.threshold);
         }
     }
 
