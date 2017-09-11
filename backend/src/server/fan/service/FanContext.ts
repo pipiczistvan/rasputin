@@ -1,3 +1,4 @@
+import { FanConfiguration } from './FanConfiguration';
 import { Value } from 'ts-json-properties';
 
 const updateTime = 10000;
@@ -16,15 +17,12 @@ export class FanContext {
     private active: boolean;
     private temperature: number;
 
-    private automatic: boolean;
-    private threshold: number;
+    private configuration: FanConfiguration;
 
     constructor() {
         this.active = false;
         this.temperature = 0;
-
-        this.automatic = false;
-        this.threshold = 40;
+        this.configuration = new FanConfiguration();
 
         this.updateContext();
     }
@@ -43,20 +41,20 @@ export class FanContext {
     }
 
     public isAutomatic(): boolean {
-        return this.automatic;
+        return this.configuration.isAutomatic();
     }
 
     public setAutomation(automatic: boolean): void {
-        this.automatic = automatic;
+        this.configuration.setAutomatic(automatic);
         this.updateContext();
     }
 
     public getThreshold(): number {
-        return this.threshold;
+        return this.configuration.getThreshold();
     }
 
     public setThreshold(threshold: number): void {
-        this.threshold = threshold;
+        this.configuration.setThreshold(threshold);
         this.updateContext();
     }
 
@@ -74,8 +72,8 @@ export class FanContext {
     }
 
     private updateActivity(): void {
-        if(this.automatic) {
-            this.active = (this.temperature > this.threshold);
+        if(this.isAutomatic()) {
+            this.active = (this.temperature > this.getThreshold());
         }
     }
 

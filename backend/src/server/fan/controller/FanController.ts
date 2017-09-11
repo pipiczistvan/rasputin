@@ -78,8 +78,11 @@ class FanController {
 
             this.fanService.setActivity(req.body.value);
 
+            const active = this.fanService.getActivity();
+
             res.json({
-                status: status
+                status: status,
+                value: active
             });
         });
     }
